@@ -1,6 +1,6 @@
 from typing import TYPE_CHECKING
 
-from fastapi_users.db import (
+from fastapi_users_db_sqlalchemy import (
     SQLAlchemyBaseUserTable,
     SQLAlchemyUserDatabase,
 )
