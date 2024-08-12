@@ -1,0 +1,10 @@
+select student_id,
+       quartal,
+       subject,
+       grade,
+       lag(grade) over (order by quartal)                                                                 as previous_grade,
+       lead(grade) over (order by quartal)                                                                as next_grade,
+       first_value(grade) over (order by quartal)                                                         as first_grade,
+       last_value(grade) over (order by quartal ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING) as last_grade,
+       nth_value(grade, 2) over (order by grade desc )                                                    as second_highest_grade
+from quartal_grades;
