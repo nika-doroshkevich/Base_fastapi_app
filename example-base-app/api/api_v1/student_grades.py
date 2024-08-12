@@ -24,3 +24,14 @@ async def create_student_grade(
         session: AsyncSession = Depends(db_helper.session_getter),
 ):
     return await student_grades.create_student_grade(session=session, student_grade=student_grade)
+
+
+@router.get(
+    "/",
+    response_model=list[StudentGrade],
+    status_code=status.HTTP_200_OK,
+)
+async def get_students_with_min_grade(
+        session: AsyncSession = Depends(db_helper.session_getter),
+):
+    return await student_grades.get_students_with_min_grade(session=session)
