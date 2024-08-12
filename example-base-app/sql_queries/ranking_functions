@@ -1,0 +1,9 @@
+select student_id,
+       subject,
+       grade,
+       row_number() over (partition by student_id order by grade desc),
+       rank() over (partition by student_id order by grade desc),
+       dense_rank() over (partition by student_id order by grade desc),
+       ntile(4) over (order by grade desc),
+       cume_dist() over (order by grade)
+from student_grades;
