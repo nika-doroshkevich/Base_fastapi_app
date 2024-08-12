@@ -1,0 +1,9 @@
+select student_id,
+       subject,
+       grade,
+       sum(grade) over (partition by student_id)   as sum_grade,
+       avg(grade) over (partition by student_id)   as avg_grade,
+       count(grade) over (partition by student_id) as count_grade,
+       min(grade) over (partition by student_id)   as min_grade,
+       max(grade) over (partition by student_id)   as max_grade
+from student_grades;
