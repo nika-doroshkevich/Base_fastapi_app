@@ -1,10 +1,25 @@
+version: "3.8"
+
 services:
 
   pg:
     image: postgres
-    environment:
-      POSTGRES_DB: example-base-app
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: password
+    container_name: db_example-base-app
+    env_file:
+      - .env-non-dev
     ports:
       - "5432:5432"
+
+  app:
+    build:
+      context: .
+    container_name: app_example-base-app
+    env_file:
+      - .env-non-dev
+    command: [ "/example-base-app/docker/app.sh" ]
+    ports:
+      - "8000:8000"
+    depends_on:
+      - pg
+    volumes:
+      - .:/example-base-app
