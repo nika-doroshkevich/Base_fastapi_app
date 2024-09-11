@@ -6,7 +6,6 @@
 - SQLAlchemy
 - Alembic
 - PostgreSQL
-- Docker
 - Poetry
 - fastapi-users
 
@@ -14,3 +13,4 @@
 - window functions
 - asyncio
 - contextlib
+- Docker
